@@ -12,6 +12,7 @@
 @interface GameController : NSObject
 
 @property NSMutableArray *dice;
+@property NSInteger rolls;
 
 -(void)holdDie:(NSInteger)number die:(NSMutableArray *)die;
 

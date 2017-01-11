@@ -9,6 +9,14 @@
 
 @implementation Dice
 
+-(instancetype)init{
+    self = [super init];
+    if (self){
+        _held = NO;
+        [self randomize];
+    }
+    return self;
+}
 
 -(void)randomize{
     self.value = arc4random_uniform(6)+1;

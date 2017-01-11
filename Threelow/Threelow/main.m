@@ -13,14 +13,13 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        NSInteger rolls = 0;
         NSMutableArray *die = [[NSMutableArray alloc]init];
         GameController *controller = [[GameController alloc]init];
         InputCollector *display = [[InputCollector alloc]init];
         for (int i = 0; i < 5; ++i){
             Dice *dice = [[Dice alloc]init];
-            dice.held = NO;
-            [dice randomize];
-            NSLog(@"%@", dice);
+            NSLog(@"%@", dice.face);
             [die addObject:dice];
         }
         bool reroll = YES;
@@ -33,16 +32,19 @@ int main(int argc, const char * argv[]) {
             }
             
             if ([inputString isEqualToString:@"roll"]){
+                ++rolls;
                 for (Dice *dice in die){
-                    if (dice.held == YES)
-                        NSLog(@"[%@]", dice.face);
-                    else{
-                        NSLog(@"%@", dice.face);
+                    if (dice.held == NO)
                         [dice randomize];
-                    }
+                    
                     
                 }
-                NSLog(@"score:%lu",[controller score:die]);
+            }
+            
+            if([inputString isEqualToString:@"reset"]){
+                rolls = 0;
+                for (Dice *dice in die)
+                    dice.held = NO;
             }
             
             if ([inputString containsString:@"hold"]){
@@ -50,6 +52,16 @@ int main(int argc, const char * argv[]) {
                 [controller holdDie:value die:die];
                 
             }
+            
+            for (Dice *dice in die){
+                if (dice.held == YES)
+                    NSLog(@"[%@]", dice.face);
+                else{
+                    NSLog(@"%@", dice.face);
+                }
+            }
+            NSLog(@"score:%lu",[controller score:die]);
+            NSLog(@"rolls:%lu",rolls);
         
             
         }
