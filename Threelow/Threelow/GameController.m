@@ -27,4 +27,12 @@
         dice.held = NO;
 }
 
+-(NSInteger)score:(NSMutableArray *)die{
+    NSInteger score = 0;
+    for (Dice *dice in die)
+        if (dice.value != 3)
+            score = score+dice.value;
+    return score;
+}
+
 @end

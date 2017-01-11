@@ -26,19 +26,24 @@ int main(int argc, const char * argv[]) {
         bool reroll = YES;
         while(reroll){
             NSString *inputString = [display inputFromPrompt:@"\nroll - Reroll unheld dice \nhold 'value' - Hold dice with value \nreset - Unhold all dice \nquit - Exit program \nEnter command:"];
+            
             if ([inputString isEqualToString:@"quit"]){
                 reroll = NO;
                 break;
             }
-            if ([inputString isEqualToString:@"roll"])
+            
+            if ([inputString isEqualToString:@"roll"]){
                 for (Dice *dice in die){
                     if (dice.held == YES)
-                        NSLog(@"[%lu]", dice.value);
+                        NSLog(@"[%@]", dice.face);
                     else{
-                        NSLog(@"%lu", dice.value);
+                        NSLog(@"%@", dice.face);
                         [dice randomize];
                     }
+                    
                 }
+                NSLog(@"score:%lu",[controller score:die]);
+            }
             
             if ([inputString containsString:@"hold"]){
                 NSInteger value = [[inputString stringByReplacingOccurrencesOfString:@"hold " withString:@""] intValue];

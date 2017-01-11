@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Dice : NSObject
 
 @property NSInteger value;
 @property BOOL held;
+@property NSString *face;
 
 -(void)randomize;
 

@@ -17,4 +17,6 @@
 
 -(void)resetDice:(NSMutableArray *)die;
 
+-(NSInteger)score:(NSMutableArray *)die;
+
 @end
