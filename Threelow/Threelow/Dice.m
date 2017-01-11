@@ -12,11 +12,9 @@
 
 
 -(void)randomize{
-    
+    self.value = arc4random_uniform(6)+1;
 }
 
-//- (NSString *)description {
-//    return [NSString stringWithFormat:@"%@", faceValue];
-//}
+
 
 @end

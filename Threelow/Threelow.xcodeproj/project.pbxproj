@@ -10,6 +10,7 @@
 		C8EB26661E26AE2100D22DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EB26651E26AE2100D22DC6 /* main.m */; };
 		C8EB266E1E26AECE00D22DC6 /* Dice.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EB266D1E26AECE00D22DC6 /* Dice.m */; };
 		C8EB26711E26BC6E00D22DC6 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EB26701E26BC6E00D22DC6 /* GameController.m */; };
+		C8EB26741E26CC0900D22DC6 /* InputCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EB26731E26CC0900D22DC6 /* InputCollector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		C8EB266D1E26AECE00D22DC6 /* Dice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dice.m; sourceTree = "<group>"; };
 		C8EB266F1E26BC6E00D22DC6 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		C8EB26701E26BC6E00D22DC6 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
+		C8EB26721E26CC0900D22DC6 /* InputCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCollector.h; sourceTree = "<group>"; };
+		C8EB26731E26CC0900D22DC6 /* InputCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCollector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				C8EB266D1E26AECE00D22DC6 /* Dice.m */,
 				C8EB266F1E26BC6E00D22DC6 /* GameController.h */,
 				C8EB26701E26BC6E00D22DC6 /* GameController.m */,
+				C8EB26721E26CC0900D22DC6 /* InputCollector.h */,
+				C8EB26731E26CC0900D22DC6 /* InputCollector.m */,
 			);
 			path = Threelow;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			files = (
 				C8EB26711E26BC6E00D22DC6 /* GameController.m in Sources */,
 				C8EB266E1E26AECE00D22DC6 /* Dice.m in Sources */,
+				C8EB26741E26CC0900D22DC6 /* InputCollector.m in Sources */,
 				C8EB26661E26AE2100D22DC6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

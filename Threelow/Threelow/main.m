@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "Dice.h"
 #import "GameController.h"
+#import "InputCollector.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *die = [[NSMutableArray alloc]init];
         GameController *controller = [[GameController alloc]init];
+        InputCollector *display = [[InputCollector alloc]init];
         for (int i = 0; i < 5; ++i){
-//          NSString *name = [NSString stringWithFormat:@"dice%d",(i+1)];
             Dice *dice = [[Dice alloc]init];
             dice.held = NO;
             [dice randomize];
@@ -24,18 +25,21 @@ int main(int argc, const char * argv[]) {
         }
         bool reroll = YES;
         while(reroll){
-            char inputChars[255];
-            printf("Enter roll or hold 'value':");
-            fgets(inputChars, 255, stdin);
-            NSString *inputString = [NSString stringWithUTF8String:inputChars];
+            NSString *inputString = [display inputFromPrompt:@"\nroll - Reroll unheld dice \nhold 'value' - Hold dice with value \nreset - Unhold all dice \nquit - Exit program \nEnter command:"];
+            if ([inputString isEqualToString:@"quit"]){
+                reroll = NO;
+                break;
+            }
             if ([inputString isEqualToString:@"roll"])
                 for (Dice *dice in die){
-                    [dice randomize];
                     if (dice.held == YES)
                         NSLog(@"[%lu]", dice.value);
-                    else
+                    else{
                         NSLog(@"%lu", dice.value);
+                        [dice randomize];
+                    }
                 }
+            
             if ([inputString containsString:@"hold"]){
                 NSInteger value = [[inputString stringByReplacingOccurrencesOfString:@"hold " withString:@""] intValue];
                 [controller holdDie:value die:die];

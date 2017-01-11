@@ -13,9 +13,18 @@
 
 -(void)holdDie:(NSInteger)number die:(NSMutableArray *)die{
     for (Dice *dice in die){
-        if (dice.value == number)
-            dice.held = YES;
+        if (dice.value == number){
+            if (dice.held == NO)
+                dice.held = YES;
+            else
+                dice.held = NO;
+            }
     }
+}
+
+-(void)resetDice:(NSMutableArray *)die{
+    for (Dice *dice in die)
+        dice.held = NO;
 }
 
 @end

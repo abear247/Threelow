@@ -15,4 +15,6 @@
 
 -(void)holdDie:(NSInteger)number die:(NSMutableArray *)die;
 
+-(void)resetDice:(NSMutableArray *)die;
+
 @end
