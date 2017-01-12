@@ -14,12 +14,13 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSInteger rolls = 0;
+        bool held = NO;
+        NSInteger highScore;
         NSMutableArray *die = [[NSMutableArray alloc]init];
         GameController *controller = [[GameController alloc]init];
         InputCollector *display = [[InputCollector alloc]init];
         for (int i = 0; i < 5; ++i){
             Dice *dice = [[Dice alloc]init];
-            NSLog(@"%@", dice.face);
             [die addObject:dice];
         }
         bool reroll = YES;
@@ -32,11 +33,18 @@ int main(int argc, const char * argv[]) {
             }
             
             if ([inputString isEqualToString:@"roll"]){
-                ++rolls;
-                for (Dice *dice in die){
-                    if (dice.held == NO)
-                        [dice randomize];
-                    
+                if (rolls == 5)
+                    NSLog(@"Max rolls, please reset");
+                else if (!held)
+                    NSLog(@"Hold required before roll");
+                
+                else{
+                    ++rolls;
+                    held = NO;
+                    for (Dice *dice in die){
+                        if (dice.held == NO)
+                            [dice randomize];
+                    }
                     
                 }
             }
@@ -48,9 +56,16 @@ int main(int argc, const char * argv[]) {
             }
             
             if ([inputString containsString:@"hold"]){
+                bool haveHeld = NO;
                 NSInteger value = [[inputString stringByReplacingOccurrencesOfString:@"hold " withString:@""] intValue];
-                [controller holdDie:value die:die];
-                
+                for (Dice *dice in die){
+                    if (dice.value == value){
+                        [controller holdDie:value die:die];
+                        held = YES;
+                    }
+                }
+                if (!haveHeld)
+                    NSLog(@"Invalid dice value");
             }
             
             for (Dice *dice in die){
@@ -62,7 +77,8 @@ int main(int argc, const char * argv[]) {
             }
             NSLog(@"score:%lu",[controller score:die]);
             NSLog(@"rolls:%lu",rolls);
-        
+            
+            
             
         }
     }

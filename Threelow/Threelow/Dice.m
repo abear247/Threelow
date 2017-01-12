@@ -14,6 +14,7 @@
     if (self){
         _held = NO;
         [self randomize];
+        NSLog(@"%@", self.face);
     }
     return self;
 }
