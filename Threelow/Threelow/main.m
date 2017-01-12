@@ -27,6 +27,11 @@ int main(int argc, const char * argv[]) {
                 break;
             }
             
+            if ([inputString isEqualToString:@"winner"]){
+                --controller.scoreToBeat;
+                NSLog(@"Winner winner chicken dinner");
+            }
+            
             if ([inputString isEqualToString:@"roll"]){
                 [controller rollDice:die];
             }
